@@ -54,5 +54,24 @@ namespace WebApplication3.Controllers
             return View(data);
 
         }
+        [HttpPost]
+        public IActionResult update(DbUser dbUser)
+        {
+            if (ModelState.IsValid)
+            {
+                Iuser.EditUser(dbUser);
+                return Redirect("/user/");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public IActionResult details(int Id)
+        {
+            var user = Iuser.GetUserById(Id);
+            return View(user);
+        }
     }
 }
