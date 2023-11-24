@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace WebApplication3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<Context>(a => a.UseSqlServer(conf.GetConnectionString("myCon")));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(op=> {
+                op.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                });
             services.AddScoped<IUser, UserRepo>();
         }
 

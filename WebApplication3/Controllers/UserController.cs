@@ -13,65 +13,75 @@ namespace WebApplication3.Controllers
     public class UserController : Controller
     {
         private readonly IUser Iuser;
-        
+
         public UserController(IUser Iuser)
         {
             this.Iuser = Iuser;
         } // 
         public IActionResult Index()
         {
-            var users = Iuser.GetUsers();
-            return View(users);
-        }
-        public IActionResult create()
-        {
             return View();
         }
 
         [HttpPost]
-        public IActionResult add(DbUser dbUser)
+        public IActionResult UserList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Iuser.AddUser(dbUser);
-                return Redirect("/user/");
+                var userList = Iuser.GetUsers().Skip(jtStartIndex).Take(jtPageSize);
+                int userCount = userList.Count();
+                return Json(new { Result = "OK", Records = userList , TotalRecordCount  = userCount });
             }
-            else
+            catch (Exception ex)
             {
-                return View();
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult add(DbUser dbUser)
+        {
+            {
+                try
+                {
+                    DbUser addUser = Iuser.AddUser(dbUser);
+                    return Json(new { Result = "OK", Record = addUser });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
             }
         }
 
         public IActionResult delete(int Id)
         {
-            Iuser.DeleteUser(Id);
-            return Redirect("/user/");
-        }
-        
-        public IActionResult edit(int Id)
-        {
-            var data = Iuser.GetUserById(Id);
-            return View(data);
+            try
+            {
+                DbUser deleteUser = Iuser.DeleteUser(Id);
+                return Json(new { Result = "OK" , Record = deleteUser });
+            }
+            catch (Exception ex)
+            {
 
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
         }
         [HttpPost]
-        public IActionResult update(DbUser dbUser)
+        public IActionResult edit(DbUser dbUser)
         {
-            if (ModelState.IsValid)
             {
-                Iuser.EditUser(dbUser);
-                return Redirect("/user/");
+                try
+                {
+                    DbUser editUser = Iuser.EditUser(dbUser);
+                    return Json(new { Result = "OK", Record = editUser });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
             }
-            else
-            {
-                return View();
-            }
-        }
 
-        public IActionResult details(int Id)
-        {
-            var user = Iuser.GetUserById(Id);
-            return View(user);
         }
     }
 }

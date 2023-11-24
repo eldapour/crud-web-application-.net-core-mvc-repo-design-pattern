@@ -23,7 +23,7 @@ namespace WebApplication3.Repositories
         /// <returns></returns>
         public IEnumerable<DbUser> GetUsers()
         {
-            var data = db.users.Select(a => a);
+            var data = db.users.ToList();
             return data;
         }
         /// <summary>
@@ -85,5 +85,6 @@ namespace WebApplication3.Repositories
             db.SaveChanges();
             return dbUser;
         }
+
     }
 }

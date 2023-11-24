@@ -7,6 +7,58 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
+    <None Include="wwwroot\lib\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
+    <None Include="wwwroot\lib\jtable\external\json2.js" />
+    <None Include="wwwroot\lib\jtable\external\json2.min.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.bd.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.ca.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.cz.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.de.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.es.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.fa.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.fr.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.hr.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.hu.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.id.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.it.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.lt.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.nl-NL.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.no.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.pl.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.pt-BR.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.pt-PT.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.ro.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.ru.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.se.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.tr.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.vi.js" />
+    <None Include="wwwroot\lib\jtable\localization\jquery.jtable.zh-CN.js" />
+    <None Include="wwwroot\lib\jtable\themes\basic\jtable_basic.less" />
+    <None Include="wwwroot\lib\jtable\themes\jqueryui\jtable_jqueryui.less" />
+    <None Include="wwwroot\lib\jtable\themes\jtable_theme_base.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\blue\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\gray\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\green\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\jtable_lightcolor_base.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\orange\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\lightcolor\red\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\blue\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\brown\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\crimson\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\darkgray\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\darkorange\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\green\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\jtable_metro_base.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\lightgray\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\pink\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\purple\jtable.less" />
+    <None Include="wwwroot\lib\jtable\themes\metro\red\jtable.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jTable" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
