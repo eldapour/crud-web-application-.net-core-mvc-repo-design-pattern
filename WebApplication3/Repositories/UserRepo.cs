@@ -21,9 +21,16 @@ namespace WebApplication3.Repositories
         /// get all users
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<DbUser> GetUsers()
+        public IEnumerable<DbUser> GetUsers(string search, int jtStartIndex, int jtPageSize)
         {
-            var data = db.users.ToList();
+            IQueryable<DbUser> query = db.users;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(a => a.Name.Contains(search) || a.Department.Contains(search)).OrderBy(a=>a.Name);
+            }
+
+            var data = query.Skip(jtStartIndex).Take(jtPageSize).ToList();
             return data;
         }
         /// <summary>

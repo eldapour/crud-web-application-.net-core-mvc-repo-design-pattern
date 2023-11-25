@@ -24,11 +24,11 @@ namespace WebApplication3.Controllers
         }
 
         [HttpPost]
-        public IActionResult UserList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public IActionResult UserList(string search = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
-                var userList = Iuser.GetUsers().Skip(jtStartIndex).Take(jtPageSize);
+                var userList = Iuser.GetUsers(search, jtStartIndex, jtPageSize);
                 int userCount = userList.Count();
                 return Json(new { Result = "OK", Records = userList , TotalRecordCount  = userCount });
             }
@@ -44,6 +44,10 @@ namespace WebApplication3.Controllers
             {
                 try
                 {
+                    if (!ModelState.IsValid)
+                    {
+                        return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    }
                     DbUser addUser = Iuser.AddUser(dbUser);
                     return Json(new { Result = "OK", Record = addUser });
                 }
@@ -73,6 +77,10 @@ namespace WebApplication3.Controllers
             {
                 try
                 {
+                    if (!ModelState.IsValid)
+                    {
+                        return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    }
                     DbUser editUser = Iuser.EditUser(dbUser);
                     return Json(new { Result = "OK", Record = editUser });
                 }
